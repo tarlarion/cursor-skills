@@ -1,0 +1,16 @@
+{
+  "version": 1,
+  "hooks": {
+    "sessionStart": [
+      {
+        "command": ".cursor/hooks/start-checklist-board-watch.sh"
+      }
+    ],
+    "afterFileEdit": [
+      {
+        "command": "node .cursor/hooks/sync-checklist-board-hook.mjs",
+        "matcher": "Write|TabWrite"
+      }
+    ]
+  }
+}
