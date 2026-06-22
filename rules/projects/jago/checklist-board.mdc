@@ -1,0 +1,24 @@
+---
+description: Checklist, changelog и kanban-доска — подключай skill checklist-board
+alwaysApply: true
+---
+
+# Checklist & changelog (Jago)
+
+1. **Skill:** `checklist-board` — `~/.cursor/skills/checklist-board/SKILL.md`
+2. **Задачи:** [checklist.md](checklist.md)
+3. **Changelog:** [CHANGELOG.md](CHANGELOG.md) → `[Unreleased]`
+4. **Новые задачи из Telegram:** `npm run checklist:pull` (git pull + sync доски)
+
+## Когда применять
+
+- Пользователь: checklist, борда, «добавь задачу», `/checklist-board`
+- После работы с Telegram-задачами — подтянуть репо: `npm run checklist:pull`
+
+## Быстрые команды
+
+| Фраза | Действие |
+|-------|----------|
+| «Добавь задачу …» | Backlog в checklist.md |
+| «Обнови доску» / «подтяни задачи» | `npm run checklist:pull` |
+| «Перенеси … в done» | checklist + CHANGELOG + sync |

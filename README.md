@@ -1,33 +1,33 @@
 # cursor-skills
 
-Публичная коллекция [Cursor Agent Skills](https://cursor.com/docs/agent/skills) — инструкции для агента под конкретные workflow.
+Публичная коллекция [Cursor Agent Skills](https://cursor.com/docs/agent/skills) и Cursor Rules — инструкции для агента под конкретные workflow.
 
 ## Структура
 
-Каждый скилл — папка с `SKILL.md` и опциональными скриптами:
-
 ```
 cursor-skills/
-├── checklist-board/
-│   ├── SKILL.md
-│   ├── scripts/          # sync checklist.md → canvas
-│   └── hooks/            # Cursor hooks (пример)
-└── …
+├── skills/                    # Личные agent skills
+│   ├── lottie-animation/
+│   └── text-to-lottie/
+├── checklist-board/           # Skill + scripts + hooks
+├── rules/
+│   ├── user/                  # User rules (глобальные)
+│   └── projects/              # Project rules по репозиториям
+│       ├── seller-landing/
+│       ├── calendar/
+│       └── jago/
+└── README.md
 ```
 
-## Установка
+## Установка skills
 
 ### Личный скилл (все проекты)
 
 ```bash
 git clone https://github.com/tarlarion/cursor-skills.git ~/.cursor/skills-src
 ln -sf ~/.cursor/skills-src/checklist-board ~/.cursor/skills/checklist-board
-```
-
-Или скопируйте папку:
-
-```bash
-cp -R checklist-board ~/.cursor/skills/checklist-board
+ln -sf ~/.cursor/skills-src/skills/lottie-animation ~/.cursor/skills/lottie-animation
+ln -sf ~/.cursor/skills-src/skills/text-to-lottie ~/.cursor/skills/text-to-lottie
 ```
 
 ### Скилл в репозитории проекта
@@ -37,11 +37,42 @@ mkdir -p .cursor/skills
 cp -R checklist-board .cursor/skills/checklist-board
 ```
 
-Для проекта можно добавить короткий оверлей в `.cursor/skills/checklist-board/SKILL.md` с путями к `checklist.md`, canvas и rule — см. [calendar](https://github.com/tarlarion/calendar) как пример.
+## Установка rules
 
-### Фоновый sync checklist → canvas (checklist-board)
+### User rules (глобально)
 
-В проекте с `checklist.md` и canvas `checklist-board.canvas.tsx`:
+Скопируйте нужные `.mdc` из `rules/user/` в **Cursor Settings → Rules**.
+
+Или подключите как project rules в конкретном репозитории:
+
+```bash
+mkdir -p .cursor/rules
+cp rules/user/locale-ru.mdc .cursor/rules/
+cp rules/user/global-locale-selection.mdc .cursor/rules/
+```
+
+### Project rules
+
+Примеры из реальных проектов лежат в `rules/projects/<project>/`. Скопируйте в `.cursor/rules/` целевого репозитория.
+
+## Скиллы
+
+| Скилл | Описание |
+|-------|----------|
+| [checklist-board](./checklist-board/) | Kanban-доска, `checklist.md`, CHANGELOG, canvas, фоновый sync |
+| [lottie-animation](./skills/lottie-animation/) | Генерация Lottie JSON анимаций |
+| [text-to-lottie](./skills/text-to-lottie/) | Текст → Lottie (Bodymovin) |
+
+## Rules
+
+| Набор | Описание |
+|-------|----------|
+| [rules/user](./rules/user/) | Локализация (ru, en, de, fr, es, pt), выбор локали |
+| [rules/projects/seller-landing](./rules/projects/seller-landing/) | Next.js, Shadcn, Toss-style design, layout |
+| [rules/projects/calendar](./rules/projects/calendar/) | checklist-board rule |
+| [rules/projects/jago](./rules/projects/jago/) | checklist-board rule |
+
+## Фоновый sync checklist → canvas (checklist-board)
 
 ```bash
 mkdir -p .cursor/scripts .cursor/hooks
@@ -50,21 +81,6 @@ cp checklist-board/hooks/* .cursor/hooks/
 cp checklist-board/hooks/hooks.json.example .cursor/hooks.json
 chmod +x .cursor/hooks/start-checklist-board-watch.sh
 ```
-
-Добавьте в `package.json`:
-
-```json
-"checklist:sync": "node .cursor/scripts/sync-checklist-board.mjs",
-"checklist:watch": "node .cursor/scripts/sync-checklist-board-watch.mjs"
-```
-
-Перезапустите Cursor — watcher на `checklist.md` стартует при открытии проекта.
-
-## Скиллы
-
-| Скилл | Описание |
-|-------|----------|
-| [checklist-board](./checklist-board/) | Kanban-доска, `checklist.md`, CHANGELOG, canvas, фоновый sync |
 
 ## Лицензия
 

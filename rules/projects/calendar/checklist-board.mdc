@@ -1,0 +1,30 @@
+---
+description: Checklist, changelog и kanban-доска — подключай skill checklist-board
+alwaysApply: true
+---
+
+# Checklist & changelog (calendar)
+
+В этом проекте ведём задачи и релизы так:
+
+1. **Skill:** `checklist-board` — прочитай `~/.cursor/skills/checklist-board/SKILL.md` при работе с задачами или завершении фич
+2. **Задачи:** [checklist.md](checklist.md)
+3. **Changelog:** [CHANGELOG.md](CHANGELOG.md) → секция `[Unreleased]`
+4. **Canvas-борда:** `checklist-board.canvas.tsx` в canvases Cursor-проекта
+
+## Когда применять
+
+- Пользователь: checklist, борда, доска, «добавь задачу», `/checklist-board`
+- Ты завершил user-facing фичу → checklist + CHANGELOG + `npm run checklist:sync`
+
+## Быстрые команды пользователя
+
+| Фраза | Действие |
+|-------|----------|
+| «Добавь задачу …» | Backlog в checklist.md |
+| «Обнови доску» | `npm run checklist:sync` |
+| «Перенеси … в done» | checklist + CHANGELOG + `npm run checklist:sync` |
+| «Применить в checklist» (с canvas) | Применить раскладку к checklist.md; задачи в **In progress** — сразу делать |
+| Задача в **In progress** (борда / checklist / чат) | Назначена на агента — начинать без «начать?» |
+
+Не забывай changelog — пользователь это отдельно отслеживает.

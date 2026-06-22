@@ -1,0 +1,5 @@
+---
+alwaysApply: true
+---
+
+Design should be responsive for width breakpoints: 1440px, 976, 576, 360

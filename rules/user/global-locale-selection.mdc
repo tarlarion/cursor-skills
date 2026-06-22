@@ -1,0 +1,21 @@
+# Global Locale Selection
+
+When content language is Russian:
+Use locale-ru.mdc.
+
+When content language is English:
+Use locale-en.mdc.
+
+When content language is German:
+Use locale-de.mdc.
+
+When content language is French:
+Use locale-fr.mdc.
+
+When content language is Spanish:
+Use locale-es.mdc.
+
+When content language is Portuguese:
+Use locale-pt.mdc.
+
+Never mix formatting conventions between locales.
