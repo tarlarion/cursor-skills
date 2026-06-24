@@ -1,0 +1,52 @@
+---
+description: >-
+  Product Compiler / AI-PRD / AIPRD v2. Применять при compile, recompile,
+  product spec, feature.md, airdp-schema.md, AI-PRD, AIPRD, Product Compiler.
+  Перед генерацией PRD — AskQuestion с контекстными кнопками (не Да/Нет).
+globs: feature.md, **/airdp-schema.md, **/*-aiprd.md
+alwaysApply: false
+---
+
+# AI-PRD Compiler (global)
+
+**Скилл (читать первым):** `~/.cursor/skills/ai-prd-compiler/SKILL.md`  
+**Примеры кнопок:** `~/.cursor/skills/ai-prd-compiler/examples.md`  
+**Схема в проекте:** `airdp-schema.md` (если есть)
+
+## Когда срабатывает
+
+`compile feature`, `recompile`, `сгенерируй PRD`, `product spec`, работа с `feature.md` / `*-aiprd.md`.
+
+## Пайплайн
+
+1. Прочитать brief + `airdp-schema.md`.
+2. **Decision pass** — если есть блокирующие неоднозначности и нет ответа в feature/чате → **AskQuestion** (до 3 вопросов).
+3. Дождаться ответов → полный AIPRD v2.
+
+## Формат вопросов (обязательно)
+
+```
+Вопрос N. <вопрос одним предложением>
+```
+
+Кнопки = **исход для продукта**, 8–90 символов:
+
+- ✅ «Каталог и поиск без регистрации; auth только для избранного и публикации»
+- ❌ «Да», «Нет», «Вариант A»
+
+Рекомендуемый вариант — первым, суффикс `(Recommended)` если feature молчит.
+
+Без AskQuestion — тот же формат в markdown, ответ номером.
+
+## Выход (7 секций)
+
+SCENARIOS · DECISIONS · PRODUCT LOGIC · UI COMPONENT TREE · API CONTRACT · ANALYTICS EVENTS · EDGE CASES
+
+UI = деревья компонентов (props / state / events). Без wireframes.
+
+## Файлы
+
+| Файл | Роль |
+|------|------|
+| `feature.md` | вход |
+| `{slug}-aiprd.md` | выход |

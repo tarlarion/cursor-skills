@@ -8,7 +8,8 @@
 cursor-skills/
 ├── skills/                    # Личные agent skills
 │   ├── lottie-animation/
-│   └── text-to-lottie/
+│   ├── text-to-lottie/
+│   └── ai-prd-compiler/
 ├── checklist-board/           # Skill + scripts + hooks
 ├── rules/
 │   ├── user/                  # User rules (глобальные)
@@ -28,6 +29,7 @@ git clone https://github.com/tarlarion/cursor-skills.git ~/.cursor/skills-src
 ln -sf ~/.cursor/skills-src/checklist-board ~/.cursor/skills/checklist-board
 ln -sf ~/.cursor/skills-src/skills/lottie-animation ~/.cursor/skills/lottie-animation
 ln -sf ~/.cursor/skills-src/skills/text-to-lottie ~/.cursor/skills/text-to-lottie
+ln -sf ~/.cursor/skills-src/skills/ai-prd-compiler ~/.cursor/skills/ai-prd-compiler
 ```
 
 ### Скилл в репозитории проекта
@@ -62,11 +64,13 @@ cp rules/user/global-locale-selection.mdc .cursor/rules/
 | [checklist-board](./checklist-board/) | Kanban-доска, `checklist.md`, CHANGELOG, canvas, фоновый sync |
 | [lottie-animation](./skills/lottie-animation/) | Генерация Lottie JSON анимаций |
 | [text-to-lottie](./skills/text-to-lottie/) | Текст → Lottie (Bodymovin) |
+| [ai-prd-compiler](./skills/ai-prd-compiler/) | Компиляция feature.md → AIPRD v2; решения через AskQuestion с контекстными кнопками |
 
 ## Rules
 
 | Набор | Описание |
 |-------|----------|
+| [rules/user/ai-prd-compiler](./rules/user/ai-prd-compiler.mdc) | Триггер compile/recompile + протокол вопросов |
 | [rules/user](./rules/user/) | Локализация (ru, en, de, fr, es, pt), выбор локали |
 | [rules/projects/seller-landing](./rules/projects/seller-landing/) | Next.js, Shadcn, Toss-style design, layout |
 | [rules/projects/calendar](./rules/projects/calendar/) | checklist-board rule |
