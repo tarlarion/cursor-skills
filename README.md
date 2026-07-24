@@ -9,7 +9,9 @@ cursor-skills/
 ├── skills/                    # Личные agent skills
 │   ├── lottie-animation/
 │   ├── text-to-lottie/
-│   └── ai-prd-compiler/
+│   ├── ai-prd-compiler/
+│   ├── icon-animation-playground/
+│   └── create-animation-guide/
 ├── checklist-board/           # Skill + scripts + hooks
 ├── rules/
 │   ├── user/                  # User rules (глобальные)
@@ -30,6 +32,8 @@ ln -sf ~/.cursor/skills-src/checklist-board ~/.cursor/skills/checklist-board
 ln -sf ~/.cursor/skills-src/skills/lottie-animation ~/.cursor/skills/lottie-animation
 ln -sf ~/.cursor/skills-src/skills/text-to-lottie ~/.cursor/skills/text-to-lottie
 ln -sf ~/.cursor/skills-src/skills/ai-prd-compiler ~/.cursor/skills/ai-prd-compiler
+ln -sf ~/.cursor/skills-src/skills/icon-animation-playground ~/.cursor/skills/icon-animation-playground
+ln -sf ~/.cursor/skills-src/skills/create-animation-guide ~/.cursor/skills/create-animation-guide
 ```
 
 ### Скилл в репозитории проекта
@@ -65,6 +69,8 @@ cp rules/user/global-locale-selection.mdc .cursor/rules/
 | [lottie-animation](./skills/lottie-animation/) | Генерация Lottie JSON анимаций |
 | [text-to-lottie](./skills/text-to-lottie/) | Текст → Lottie (Bodymovin) |
 | [ai-prd-compiler](./skills/ai-prd-compiler/) | Компиляция feature.md → AIPRD v2; решения через AskQuestion с контекстными кнопками |
+| [icon-animation-playground](./skills/icon-animation-playground/) | Soft dashboard playground: params, gallery, timeline, SVG upload, Save to source |
+| [create-animation-guide](./skills/create-animation-guide/) | Добыча уроков из кода/заметок → `animation-principles.md` (полный + condensed) |
 
 ## Rules
 
